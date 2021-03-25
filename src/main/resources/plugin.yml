@@ -1,0 +1,8 @@
+name: ShulkerBack
+version: ${project.version}
+main: angelcometfish.com.github.shulkerback.ShulkerBack
+api-version: 1.15
+
+commands:
+  rput:
+    description: open gui command
