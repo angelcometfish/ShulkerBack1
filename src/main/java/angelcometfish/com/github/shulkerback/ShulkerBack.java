@@ -3,13 +3,13 @@ package angelcometfish.com.github.shulkerback;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.ShulkerBox;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BlockStateMeta;
@@ -17,12 +17,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class ShulkerBack extends JavaPlugin implements Listener {
 
-    @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        Player player = (Player) sender;
-        ItemStack Shulkerhand = ((Player) sender).getInventory().getItemInMainHand();
+
+    @EventHandler
+    public void interrupt(PlayerInteractEvent e){
+        Player player = e.getPlayer();
+        ItemStack Shulkerhand = player.getInventory().getItemInMainHand();
         Location loc = player.getLocation();
+
         if (Shulkerhand.getType() == Material.SHULKER_BOX) {
+            if(e.getAction()== Action.RIGHT_CLICK_AIR)
             if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
                 BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
                 if (im.getBlockState() instanceof ShulkerBox) {
@@ -36,6 +39,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                 }
             }
         } else if (Shulkerhand.getType() == Material.WHITE_SHULKER_BOX) {
+            if(e.getAction()== Action.RIGHT_CLICK_AIR)
             if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
                 BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
                 if (im.getBlockState() instanceof ShulkerBox) {
@@ -48,6 +52,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                 }
             }
         } else if (Shulkerhand.getType() == Material.ORANGE_SHULKER_BOX) {
+            if(e.getAction()== Action.RIGHT_CLICK_AIR)
             if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
                 BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
                 if (im.getBlockState() instanceof ShulkerBox) {
@@ -60,6 +65,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                 }
             }
         } else if (Shulkerhand.getType() == Material.MAGENTA_SHULKER_BOX) {
+            if(e.getAction()== Action.RIGHT_CLICK_AIR)
             if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
                 BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
                 if (im.getBlockState() instanceof ShulkerBox) {
@@ -72,6 +78,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                 }
             }
         } else if (Shulkerhand.getType() == Material.LIGHT_BLUE_SHULKER_BOX) {
+            if(e.getAction()== Action.RIGHT_CLICK_AIR)
             if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
                 BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
                 if (im.getBlockState() instanceof ShulkerBox) {
@@ -84,6 +91,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                 }
             }
         } else if (Shulkerhand.getType() == Material.YELLOW_SHULKER_BOX) {
+            if(e.getAction()== Action.RIGHT_CLICK_AIR)
             if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
                 BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
                 if (im.getBlockState() instanceof ShulkerBox) {
@@ -96,6 +104,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                 }
             }
         } else if (Shulkerhand.getType() == Material.LIME_SHULKER_BOX) {
+            if(e.getAction()== Action.RIGHT_CLICK_AIR)
             if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
                 BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
                 if (im.getBlockState() instanceof ShulkerBox) {
@@ -108,6 +117,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                 }
             }
         } else if (Shulkerhand.getType() == Material.PINK_SHULKER_BOX) {
+            if(e.getAction()== Action.RIGHT_CLICK_AIR)
             if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
                 BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
                 if (im.getBlockState() instanceof ShulkerBox) {
@@ -120,6 +130,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                 }
             }
         } else if (Shulkerhand.getType() == Material.GRAY_SHULKER_BOX) {
+            if(e.getAction()== Action.RIGHT_CLICK_AIR)
             if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
                 BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
                 if (im.getBlockState() instanceof ShulkerBox) {
@@ -132,6 +143,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                 }
             }
         } else if (Shulkerhand.getType() == Material.LIGHT_GRAY_SHULKER_BOX) {
+            if(e.getAction()== Action.RIGHT_CLICK_AIR)
             if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
                 BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
                 if (im.getBlockState() instanceof ShulkerBox) {
@@ -144,6 +156,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                 }
             }
         } else if (Shulkerhand.getType() == Material.CYAN_SHULKER_BOX) {
+            if(e.getAction()== Action.RIGHT_CLICK_AIR)
             if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
                 BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
                 if (im.getBlockState() instanceof ShulkerBox) {
@@ -156,6 +169,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                 }
             }
         } else if (Shulkerhand.getType() == Material.PURPLE_SHULKER_BOX) {
+            if(e.getAction()== Action.RIGHT_CLICK_AIR)
             if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
                 BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
                 if (im.getBlockState() instanceof ShulkerBox) {
@@ -168,6 +182,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                 }
             }
         } else if (Shulkerhand.getType() == Material.BLUE_SHULKER_BOX) {
+            if(e.getAction()== Action.RIGHT_CLICK_AIR)
             if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
                 BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
                 if (im.getBlockState() instanceof ShulkerBox) {
@@ -180,6 +195,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                 }
             }
         } else if (Shulkerhand.getType() == Material.BROWN_SHULKER_BOX) {
+            if(e.getAction()== Action.RIGHT_CLICK_AIR)
             if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
                 BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
                 if (im.getBlockState() instanceof ShulkerBox) {
@@ -192,6 +208,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                 }
             }
         } else if (Shulkerhand.getType() == Material.GREEN_SHULKER_BOX) {
+            if(e.getAction()== Action.RIGHT_CLICK_AIR)
             if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
                 BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
                 if (im.getBlockState() instanceof ShulkerBox) {
@@ -204,6 +221,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                 }
             }
         } else if (Shulkerhand.getType() == Material.RED_SHULKER_BOX) {
+            if(e.getAction()== Action.RIGHT_CLICK_AIR)
             if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
                 BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
                 if (im.getBlockState() instanceof ShulkerBox) {
@@ -216,6 +234,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                 }
             }
         } else if (Shulkerhand.getType() == Material.BLACK_SHULKER_BOX) {
+            if(e.getAction()== Action.RIGHT_CLICK_AIR)
             if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
                 BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
                 if (im.getBlockState() instanceof ShulkerBox) {
@@ -231,7 +250,6 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
             player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを手に持ってからお試しください"));
         }
-        return false;
     }
 
     @Override
