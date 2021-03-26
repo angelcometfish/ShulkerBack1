@@ -327,7 +327,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
 
     }
 
-        @EventHandler
+    @EventHandler
         public void onClose(InventoryCloseEvent e){
             Inventory backpack = e.getInventory();
             Player player = (Player) e.getPlayer();
@@ -351,6 +351,278 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                         }
                     }
 
+                }else if(Shulkerhand.getType() == Material.WHITE_SHULKER_BOX){
+                    if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
+                        BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
+                        if (im.getBlockState() instanceof ShulkerBox) {
+                            Location ploc = player.getLocation().clone();
+                            ploc.setY(0);
+                            Block yblock = ploc.getBlock();
+                            yblock.setType(Material.SHULKER_BOX);
+                            ShulkerBox fakeshulker = (ShulkerBox)yblock.getState();
+                            Inventory newInv = fakeshulker.getInventory();
+                            newInv.setContents(backpack.getContents());
+                            im.setBlockState(yblock.getState());
+                            Shulkerhand.setItemMeta(im);
+                            yblock.setType(Material.BEDROCK);
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
+                        }
+                    }
+                }else if(Shulkerhand.getType() == Material.ORANGE_SHULKER_BOX){
+                    if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
+                        BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
+                        if (im.getBlockState() instanceof ShulkerBox) {
+                            Location ploc = player.getLocation().clone();
+                            ploc.setY(0);
+                            Block yblock = ploc.getBlock();
+                            yblock.setType(Material.SHULKER_BOX);
+                            ShulkerBox fakeshulker = (ShulkerBox)yblock.getState();
+                            Inventory newInv = fakeshulker.getInventory();
+                            newInv.setContents(backpack.getContents());
+                            im.setBlockState(yblock.getState());
+                            Shulkerhand.setItemMeta(im);
+                            yblock.setType(Material.BEDROCK);
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
+                        }
+                    }
+            }else if(Shulkerhand.getType() == Material.MAGENTA_SHULKER_BOX){
+                    if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
+                        BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
+                        if (im.getBlockState() instanceof ShulkerBox) {
+                            Location ploc = player.getLocation().clone();
+                            ploc.setY(0);
+                            Block yblock = ploc.getBlock();
+                            yblock.setType(Material.SHULKER_BOX);
+                            ShulkerBox fakeshulker = (ShulkerBox)yblock.getState();
+                            Inventory newInv = fakeshulker.getInventory();
+                            newInv.setContents(backpack.getContents());
+                            im.setBlockState(yblock.getState());
+                            Shulkerhand.setItemMeta(im);
+                            yblock.setType(Material.BEDROCK);
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
+                        }
+                    }
+                }else if(Shulkerhand.getType() == Material.LIGHT_BLUE_SHULKER_BOX){
+                    if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
+                        BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
+                        if (im.getBlockState() instanceof ShulkerBox) {
+                            Location ploc = player.getLocation().clone();
+                            ploc.setY(0);
+                            Block yblock = ploc.getBlock();
+                            yblock.setType(Material.SHULKER_BOX);
+                            ShulkerBox fakeshulker = (ShulkerBox)yblock.getState();
+                            Inventory newInv = fakeshulker.getInventory();
+                            newInv.setContents(backpack.getContents());
+                            im.setBlockState(yblock.getState());
+                            Shulkerhand.setItemMeta(im);
+                            yblock.setType(Material.BEDROCK);
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
+                        }
+                    }
+                }else if(Shulkerhand.getType() == Material.YELLOW_SHULKER_BOX){
+                    if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
+                        BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
+                        if (im.getBlockState() instanceof ShulkerBox) {
+                            Location ploc = player.getLocation().clone();
+                            ploc.setY(0);
+                            Block yblock = ploc.getBlock();
+                            yblock.setType(Material.SHULKER_BOX);
+                            ShulkerBox fakeshulker = (ShulkerBox)yblock.getState();
+                            Inventory newInv = fakeshulker.getInventory();
+                            newInv.setContents(backpack.getContents());
+                            im.setBlockState(yblock.getState());
+                            Shulkerhand.setItemMeta(im);
+                            yblock.setType(Material.BEDROCK);
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
+                        }
+                    }
+                }else if(Shulkerhand.getType() == Material.LIME_SHULKER_BOX){
+                    if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
+                        BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
+                        if (im.getBlockState() instanceof ShulkerBox) {
+                            Location ploc = player.getLocation().clone();
+                            ploc.setY(0);
+                            Block yblock = ploc.getBlock();
+                            yblock.setType(Material.SHULKER_BOX);
+                            ShulkerBox fakeshulker = (ShulkerBox)yblock.getState();
+                            Inventory newInv = fakeshulker.getInventory();
+                            newInv.setContents(backpack.getContents());
+                            im.setBlockState(yblock.getState());
+                            Shulkerhand.setItemMeta(im);
+                            yblock.setType(Material.BEDROCK);
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
+                        }
+                    }
+                }else if(Shulkerhand.getType() == Material.PINK_SHULKER_BOX){
+                    if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
+                        BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
+                        if (im.getBlockState() instanceof ShulkerBox) {
+                            Location ploc = player.getLocation().clone();
+                            ploc.setY(0);
+                            Block yblock = ploc.getBlock();
+                            yblock.setType(Material.SHULKER_BOX);
+                            ShulkerBox fakeshulker = (ShulkerBox)yblock.getState();
+                            Inventory newInv = fakeshulker.getInventory();
+                            newInv.setContents(backpack.getContents());
+                            im.setBlockState(yblock.getState());
+                            Shulkerhand.setItemMeta(im);
+                            yblock.setType(Material.BEDROCK);
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
+                        }
+                    }
+                }else if(Shulkerhand.getType() == Material.GRAY_SHULKER_BOX){
+                    if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
+                        BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
+                        if (im.getBlockState() instanceof ShulkerBox) {
+                            Location ploc = player.getLocation().clone();
+                            ploc.setY(0);
+                            Block yblock = ploc.getBlock();
+                            yblock.setType(Material.SHULKER_BOX);
+                            ShulkerBox fakeshulker = (ShulkerBox)yblock.getState();
+                            Inventory newInv = fakeshulker.getInventory();
+                            newInv.setContents(backpack.getContents());
+                            im.setBlockState(yblock.getState());
+                            Shulkerhand.setItemMeta(im);
+                            yblock.setType(Material.BEDROCK);
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
+                        }
+                    }
+                }else if(Shulkerhand.getType() == Material.LIGHT_GRAY_SHULKER_BOX){
+                    if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
+                        BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
+                        if (im.getBlockState() instanceof ShulkerBox) {
+                            Location ploc = player.getLocation().clone();
+                            ploc.setY(0);
+                            Block yblock = ploc.getBlock();
+                            yblock.setType(Material.SHULKER_BOX);
+                            ShulkerBox fakeshulker = (ShulkerBox)yblock.getState();
+                            Inventory newInv = fakeshulker.getInventory();
+                            newInv.setContents(backpack.getContents());
+                            im.setBlockState(yblock.getState());
+                            Shulkerhand.setItemMeta(im);
+                            yblock.setType(Material.BEDROCK);
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
+                        }
+                    }
+                }else if(Shulkerhand.getType() == Material.CYAN_SHULKER_BOX){
+                    if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
+                        BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
+                        if (im.getBlockState() instanceof ShulkerBox) {
+                            Location ploc = player.getLocation().clone();
+                            ploc.setY(0);
+                            Block yblock = ploc.getBlock();
+                            yblock.setType(Material.SHULKER_BOX);
+                            ShulkerBox fakeshulker = (ShulkerBox)yblock.getState();
+                            Inventory newInv = fakeshulker.getInventory();
+                            newInv.setContents(backpack.getContents());
+                            im.setBlockState(yblock.getState());
+                            Shulkerhand.setItemMeta(im);
+                            yblock.setType(Material.BEDROCK);
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
+                        }
+                    }
+                }else if(Shulkerhand.getType() == Material.PURPLE_SHULKER_BOX){
+                    if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
+                        BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
+                        if (im.getBlockState() instanceof ShulkerBox) {
+                            Location ploc = player.getLocation().clone();
+                            ploc.setY(0);
+                            Block yblock = ploc.getBlock();
+                            yblock.setType(Material.SHULKER_BOX);
+                            ShulkerBox fakeshulker = (ShulkerBox)yblock.getState();
+                            Inventory newInv = fakeshulker.getInventory();
+                            newInv.setContents(backpack.getContents());
+                            im.setBlockState(yblock.getState());
+                            Shulkerhand.setItemMeta(im);
+                            yblock.setType(Material.BEDROCK);
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
+                        }
+                    }
+                }else if(Shulkerhand.getType() == Material.BLUE_SHULKER_BOX){
+                    if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
+                        BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
+                        if (im.getBlockState() instanceof ShulkerBox) {
+                            Location ploc = player.getLocation().clone();
+                            ploc.setY(0);
+                            Block yblock = ploc.getBlock();
+                            yblock.setType(Material.SHULKER_BOX);
+                            ShulkerBox fakeshulker = (ShulkerBox)yblock.getState();
+                            Inventory newInv = fakeshulker.getInventory();
+                            newInv.setContents(backpack.getContents());
+                            im.setBlockState(yblock.getState());
+                            Shulkerhand.setItemMeta(im);
+                            yblock.setType(Material.BEDROCK);
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
+                        }
+                    }
+                }else if(Shulkerhand.getType() == Material.BROWN_SHULKER_BOX){
+                    if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
+                        BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
+                        if (im.getBlockState() instanceof ShulkerBox) {
+                            Location ploc = player.getLocation().clone();
+                            ploc.setY(0);
+                            Block yblock = ploc.getBlock();
+                            yblock.setType(Material.SHULKER_BOX);
+                            ShulkerBox fakeshulker = (ShulkerBox)yblock.getState();
+                            Inventory newInv = fakeshulker.getInventory();
+                            newInv.setContents(backpack.getContents());
+                            im.setBlockState(yblock.getState());
+                            Shulkerhand.setItemMeta(im);
+                            yblock.setType(Material.BEDROCK);
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
+                        }
+                    }
+                }else if(Shulkerhand.getType() == Material.GREEN_SHULKER_BOX){
+                    if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
+                        BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
+                        if (im.getBlockState() instanceof ShulkerBox) {
+                            Location ploc = player.getLocation().clone();
+                            ploc.setY(0);
+                            Block yblock = ploc.getBlock();
+                            yblock.setType(Material.SHULKER_BOX);
+                            ShulkerBox fakeshulker = (ShulkerBox)yblock.getState();
+                            Inventory newInv = fakeshulker.getInventory();
+                            newInv.setContents(backpack.getContents());
+                            im.setBlockState(yblock.getState());
+                            Shulkerhand.setItemMeta(im);
+                            yblock.setType(Material.BEDROCK);
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
+                        }
+                    }
+                }else if(Shulkerhand.getType() == Material.RED_SHULKER_BOX){
+                    if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
+                        BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
+                        if (im.getBlockState() instanceof ShulkerBox) {
+                            Location ploc = player.getLocation().clone();
+                            ploc.setY(0);
+                            Block yblock = ploc.getBlock();
+                            yblock.setType(Material.SHULKER_BOX);
+                            ShulkerBox fakeshulker = (ShulkerBox)yblock.getState();
+                            Inventory newInv = fakeshulker.getInventory();
+                            newInv.setContents(backpack.getContents());
+                            im.setBlockState(yblock.getState());
+                            Shulkerhand.setItemMeta(im);
+                            yblock.setType(Material.BEDROCK);
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
+                        }
+                    }
+                }else if(Shulkerhand.getType() == Material.BLACK_SHULKER_BOX){
+                    if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
+                        BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
+                        if (im.getBlockState() instanceof ShulkerBox) {
+                            Location ploc = player.getLocation().clone();
+                            ploc.setY(0);
+                            Block yblock = ploc.getBlock();
+                            yblock.setType(Material.SHULKER_BOX);
+                            ShulkerBox fakeshulker = (ShulkerBox)yblock.getState();
+                            Inventory newInv = fakeshulker.getInventory();
+                            newInv.setContents(backpack.getContents());
+                            im.setBlockState(yblock.getState());
+                            Shulkerhand.setItemMeta(im);
+                            yblock.setType(Material.BEDROCK);
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
+                        }
+                    }
                 }
             }
         }
