@@ -234,42 +234,60 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
     @EventHandler
     public void onClick(InventoryClickEvent e){
         ItemStack slot = e.getCurrentItem();
+        Player player = (Player) e.getView().getPlayer();
         if(slot==null) return;
         if(e.getView().getTitle().equals("ShulkerBox")){
             if(slot.getType()==Material.SHULKER_BOX){
                 e.setCancelled(true);
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
             }else if(slot.getType()==Material.WHITE_SHULKER_BOX){
                 e.setCancelled(true);
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
             }else if(slot.getType()==Material.ORANGE_SHULKER_BOX){
                 e.setCancelled(true);
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
             }else if(slot.getType()==Material.MAGENTA_SHULKER_BOX){
                 e.setCancelled(true);
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
             }else if(slot.getType()==Material.LIGHT_BLUE_SHULKER_BOX){
                 e.setCancelled(true);
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
             }else if(slot.getType()==Material.YELLOW_SHULKER_BOX){
                 e.setCancelled(true);
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
             }else if(slot.getType()==Material.LIME_SHULKER_BOX){
                 e.setCancelled(true);
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
             }else if(slot.getType()==Material.PINK_SHULKER_BOX){
                 e.setCancelled(true);
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
             }else if(slot.getType()==Material.GRAY_SHULKER_BOX){
                 e.setCancelled(true);
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
             }else if(slot.getType()==Material.LIGHT_GRAY_SHULKER_BOX){
                 e.setCancelled(true);
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
             }else if(slot.getType()==Material.CYAN_SHULKER_BOX){
                 e.setCancelled(true);
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
             }else if(slot.getType()==Material.PURPLE_SHULKER_BOX){
                 e.setCancelled(true);
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
             }else if(slot.getType()==Material.BLUE_SHULKER_BOX){
                 e.setCancelled(true);
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
             }else if(slot.getType()==Material.BROWN_SHULKER_BOX){
                 e.setCancelled(true);
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
             }else if(slot.getType()==Material.GREEN_SHULKER_BOX){
                 e.setCancelled(true);
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
             }else if(slot.getType()==Material.RED_SHULKER_BOX){
                 e.setCancelled(true);
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
             }else if(slot.getType()==Material.BLACK_SHULKER_BOX){
                 e.setCancelled(true);
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
             }
         }
 
