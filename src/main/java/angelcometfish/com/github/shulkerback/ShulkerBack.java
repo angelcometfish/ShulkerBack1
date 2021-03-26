@@ -71,47 +71,70 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
     }
 
     @EventHandler
-        public void onClose(InventoryCloseEvent e){
-            Inventory backpack = e.getInventory();
-            Player player = (Player) e.getPlayer();
-            if (e.getView().getTitle().equals("ShulkerBox")) {
-                ItemStack Shulkerhand = player.getInventory().getItemInMainHand();
-                if (Shulkerhand.getType() == Material.SHULKER_BOX) {
-                    if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
-                        BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
-                        if (im.getBlockState() instanceof ShulkerBox) {
-                            Location ploc = player.getLocation().clone();
-                            ploc.setY(0);
+        public void onClose(InventoryCloseEvent e) {
+        Inventory backpack = e.getInventory();
+        Player player = (Player) e.getPlayer();
+        if (e.getView().getTitle().equals("ShulkerBox")) {
+            ItemStack Shulkerhand = player.getInventory().getItemInMainHand();
+            if (Shulkerhand.getType() == Material.SHULKER_BOX) {
+                if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
+                    BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
+                    if (im.getBlockState() instanceof ShulkerBox) {
+                        Location ploc = player.getLocation().clone();
+                        ploc.setY(ploc.getY() + 2);
+                        Material ycheack = ploc.getBlock().getType();
+                        while (ycheack != Material.AIR && ycheack.name().endsWith("SHULKER_BOX")) {
+                            if (ploc.getY() == 255) {
+                                ploc.setX(ploc.getX() + 1);
+                                ycheack = ploc.getBlock().getType();
+                                continue;
+                            }
+
+                            ploc.setY(ploc.getY() + 1);
+                            ycheack = ploc.getBlock().getType();
+                        }
                             Block yblock = ploc.getBlock();
                             yblock.setType(Material.SHULKER_BOX);
-                            ShulkerBox fakeshulker = (ShulkerBox)yblock.getState();
+                            ShulkerBox fakeshulker = (ShulkerBox) yblock.getState();
                             Inventory newInv = fakeshulker.getInventory();
                             newInv.setContents(backpack.getContents());
                             im.setBlockState(yblock.getState());
                             Shulkerhand.setItemMeta(im);
-                            yblock.setType(Material.BEDROCK);
+                            yblock.setType(Material.AIR);
                             player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
                         }
                     }
 
-                }else if(Shulkerhand.getType().name().endsWith("SHULKER_BOX")){
+                } else if (Shulkerhand.getType().name().endsWith("SHULKER_BOX")) {
                     if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
                         BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
                         if (im.getBlockState() instanceof ShulkerBox) {
                             Location ploc = player.getLocation().clone();
-                            ploc.setY(0);
+                            ploc.setY(ploc.getY() + 2);
+                            Material ycheack = ploc.getBlock().getType();
+                            while (ycheack != Material.AIR && ycheack.name().endsWith("SHULKER_BOX")) {
+                                if (ploc.getY() == 255) {
+                                    ploc.setX(ploc.getX() + 1);
+                                    ycheack = ploc.getBlock().getType();
+                                    continue;
+                                }
+
+                                ploc.setY(ploc.getY() + 1);
+                                ycheack = ploc.getBlock().getType();
+                            }
                             Block yblock = ploc.getBlock();
                             yblock.setType(Material.SHULKER_BOX);
-                            ShulkerBox fakeshulker = (ShulkerBox)yblock.getState();
+                            ShulkerBox fakeshulker = (ShulkerBox) yblock.getState();
                             Inventory newInv = fakeshulker.getInventory();
                             newInv.setContents(backpack.getContents());
                             im.setBlockState(yblock.getState());
                             Shulkerhand.setItemMeta(im);
-                            yblock.setType(Material.BEDROCK);
+                            yblock.setType(Material.AIR);
                             player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
                         }
                     }
                 }
-                    }
-                }
             }
+        }
+    }
+
