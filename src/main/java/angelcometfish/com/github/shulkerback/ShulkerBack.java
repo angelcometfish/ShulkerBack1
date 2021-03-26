@@ -38,9 +38,6 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
 
                 }
             }
-        } else {
-            player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを手に持ってからお試しください"));
         }
     }
 
