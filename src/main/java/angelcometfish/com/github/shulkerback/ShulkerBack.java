@@ -1,9 +1,6 @@
 package angelcometfish.com.github.shulkerback;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.ShulkerBox;
 import org.bukkit.command.Command;
@@ -24,6 +21,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
         Player player = (Player) sender;
         ItemStack Shulkerhand = ((Player) sender).getInventory().getItemInMainHand();
+        Location loc = player.getLocation();
         if (Shulkerhand.getType() == Material.SHULKER_BOX) {
             if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
                 BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
@@ -31,6 +29,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                     ShulkerBox shulker = (ShulkerBox) im.getBlockState();
                     Inventory inv = Bukkit.createInventory(null, 27, "ShulkerBox");
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを開きます"));
+                    player.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
                     inv.setContents(shulker.getInventory().getContents());
                     player.openInventory(inv);
 
@@ -43,6 +42,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                     ShulkerBox shulker = (ShulkerBox) im.getBlockState();
                     Inventory inv = Bukkit.createInventory(null, 27, "ShulkerBox");
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを開きます"));
+                    player.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
                     inv.setContents(shulker.getInventory().getContents());
                     player.openInventory(inv);
                 }
@@ -54,6 +54,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                     ShulkerBox shulker = (ShulkerBox) im.getBlockState();
                     Inventory inv = Bukkit.createInventory(null, 27, "ShulkerBox");
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを開きます"));
+                    player.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
                     inv.setContents(shulker.getInventory().getContents());
                     player.openInventory(inv);
                 }
@@ -65,6 +66,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                     ShulkerBox shulker = (ShulkerBox) im.getBlockState();
                     Inventory inv = Bukkit.createInventory(null, 27, "ShulkerBox");
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを開きます"));
+                    player.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
                     inv.setContents(shulker.getInventory().getContents());
                     player.openInventory(inv);
                 }
@@ -76,6 +78,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                     ShulkerBox shulker = (ShulkerBox) im.getBlockState();
                     Inventory inv = Bukkit.createInventory(null, 27, "ShulkerBox");
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを開きます"));
+                    player.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
                     inv.setContents(shulker.getInventory().getContents());
                     player.openInventory(inv);
                 }
@@ -87,6 +90,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                     ShulkerBox shulker = (ShulkerBox) im.getBlockState();
                     Inventory inv = Bukkit.createInventory(null, 27, "ShulkerBox");
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを開きます"));
+                    player.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
                     inv.setContents(shulker.getInventory().getContents());
                     player.openInventory(inv);
                 }
@@ -98,6 +102,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                     ShulkerBox shulker = (ShulkerBox) im.getBlockState();
                     Inventory inv = Bukkit.createInventory(null, 27, "ShulkerBox");
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを開きます"));
+                    player.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
                     inv.setContents(shulker.getInventory().getContents());
                     player.openInventory(inv);
                 }
@@ -109,6 +114,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                     ShulkerBox shulker = (ShulkerBox) im.getBlockState();
                     Inventory inv = Bukkit.createInventory(null, 27, "ShulkerBox");
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを開きます"));
+                    player.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
                     inv.setContents(shulker.getInventory().getContents());
                     player.openInventory(inv);
                 }
@@ -120,6 +126,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                     ShulkerBox shulker = (ShulkerBox) im.getBlockState();
                     Inventory inv = Bukkit.createInventory(null, 27, "ShulkerBox");
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを開きます"));
+                    player.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
                     inv.setContents(shulker.getInventory().getContents());
                     player.openInventory(inv);
                 }
@@ -131,6 +138,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                     ShulkerBox shulker = (ShulkerBox) im.getBlockState();
                     Inventory inv = Bukkit.createInventory(null, 27, "ShulkerBox");
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを開きます"));
+                    player.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
                     inv.setContents(shulker.getInventory().getContents());
                     player.openInventory(inv);
                 }
@@ -142,6 +150,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                     ShulkerBox shulker = (ShulkerBox) im.getBlockState();
                     Inventory inv = Bukkit.createInventory(null, 27, "ShulkerBox");
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを開きます"));
+                    player.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
                     inv.setContents(shulker.getInventory().getContents());
                     player.openInventory(inv);
                 }
@@ -153,6 +162,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                     ShulkerBox shulker = (ShulkerBox) im.getBlockState();
                     Inventory inv = Bukkit.createInventory(null, 27, "ShulkerBox");
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを開きます"));
+                    player.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
                     inv.setContents(shulker.getInventory().getContents());
                     player.openInventory(inv);
                 }
@@ -164,6 +174,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                     ShulkerBox shulker = (ShulkerBox) im.getBlockState();
                     Inventory inv = Bukkit.createInventory(null, 27, "ShulkerBox");
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを開きます"));
+                    player.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
                     inv.setContents(shulker.getInventory().getContents());
                     player.openInventory(inv);
                 }
@@ -175,6 +186,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                     ShulkerBox shulker = (ShulkerBox) im.getBlockState();
                     Inventory inv = Bukkit.createInventory(null, 27, "ShulkerBox");
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを開きます"));
+                    player.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
                     inv.setContents(shulker.getInventory().getContents());
                     player.openInventory(inv);
                 }
@@ -186,6 +198,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                     ShulkerBox shulker = (ShulkerBox) im.getBlockState();
                     Inventory inv = Bukkit.createInventory(null, 27, "ShulkerBox");
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを開きます"));
+                    player.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
                     inv.setContents(shulker.getInventory().getContents());
                     player.openInventory(inv);
                 }
@@ -197,6 +210,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                     ShulkerBox shulker = (ShulkerBox) im.getBlockState();
                     Inventory inv = Bukkit.createInventory(null, 27, "ShulkerBox");
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを開きます"));
+                    player.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
                     inv.setContents(shulker.getInventory().getContents());
                     player.openInventory(inv);
                 }
@@ -208,11 +222,13 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                     ShulkerBox shulker = (ShulkerBox) im.getBlockState();
                     Inventory inv = Bukkit.createInventory(null, 27, "ShulkerBox");
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを開きます"));
+                    player.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
                     inv.setContents(shulker.getInventory().getContents());
                     player.openInventory(inv);
                 }
             }
         } else {
+            player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを手に持ってからお試しください"));
         }
         return false;
@@ -235,59 +251,77 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
     public void onClick(InventoryClickEvent e){
         ItemStack slot = e.getCurrentItem();
         Player player = (Player) e.getView().getPlayer();
+        Location loc = player.getLocation();
         if(slot==null) return;
         if(e.getView().getTitle().equals("ShulkerBox")){
             if(slot.getType()==Material.SHULKER_BOX){
                 e.setCancelled(true);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
+                player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
             }else if(slot.getType()==Material.WHITE_SHULKER_BOX){
                 e.setCancelled(true);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
+                player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
             }else if(slot.getType()==Material.ORANGE_SHULKER_BOX){
                 e.setCancelled(true);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
+                player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
             }else if(slot.getType()==Material.MAGENTA_SHULKER_BOX){
                 e.setCancelled(true);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
+                player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
             }else if(slot.getType()==Material.LIGHT_BLUE_SHULKER_BOX){
                 e.setCancelled(true);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
+                player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
             }else if(slot.getType()==Material.YELLOW_SHULKER_BOX){
                 e.setCancelled(true);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
+                player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
             }else if(slot.getType()==Material.LIME_SHULKER_BOX){
                 e.setCancelled(true);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
+                player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
             }else if(slot.getType()==Material.PINK_SHULKER_BOX){
                 e.setCancelled(true);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
+                player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
             }else if(slot.getType()==Material.GRAY_SHULKER_BOX){
                 e.setCancelled(true);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
+                player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
             }else if(slot.getType()==Material.LIGHT_GRAY_SHULKER_BOX){
                 e.setCancelled(true);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
+                player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
             }else if(slot.getType()==Material.CYAN_SHULKER_BOX){
                 e.setCancelled(true);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
+                player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
             }else if(slot.getType()==Material.PURPLE_SHULKER_BOX){
                 e.setCancelled(true);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
+                player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
             }else if(slot.getType()==Material.BLUE_SHULKER_BOX){
                 e.setCancelled(true);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
+                player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
             }else if(slot.getType()==Material.BROWN_SHULKER_BOX){
                 e.setCancelled(true);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
+                player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
             }else if(slot.getType()==Material.GREEN_SHULKER_BOX){
                 e.setCancelled(true);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
+                player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
             }else if(slot.getType()==Material.RED_SHULKER_BOX){
                 e.setCancelled(true);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
+                player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
             }else if(slot.getType()==Material.BLACK_SHULKER_BOX){
                 e.setCancelled(true);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
+                player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
             }
         }
 
