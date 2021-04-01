@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -26,18 +27,18 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
 
         if (Shulkerhand.getType().name().endsWith("SHULKER_BOX")) {
             if(e.getAction()== Action.RIGHT_CLICK_AIR)
-            if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
-                BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
-                if (im.getBlockState() instanceof ShulkerBox) {
-                    ShulkerBox shulker = (ShulkerBox) im.getBlockState();
-                    Inventory inv = Bukkit.createInventory(null, 27, "ShulkerBox");
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを開きます"));
-                    player.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
-                    inv.setContents(shulker.getInventory().getContents());
-                    player.openInventory(inv);
+                if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
+                    BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
+                    if (im.getBlockState() instanceof ShulkerBox) {
+                        ShulkerBox shulker = (ShulkerBox) im.getBlockState();
+                        Inventory inv = Bukkit.createInventory(null, 27, "ShulkerBox");
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを開きます"));
+                        player.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
+                        inv.setContents(shulker.getInventory().getContents());
+                        player.openInventory(inv);
 
+                    }
                 }
-            }
         }
     }
 
@@ -55,37 +56,43 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
     }
 
     @EventHandler
-    public void onClick(InventoryClickEvent e){
+    public void onClick(InventoryClickEvent e) {
         ItemStack slot = e.getCurrentItem();
         Player player = (Player) e.getView().getPlayer();
         Location loc = player.getLocation();
-        if(slot==null) return;
-        if(e.getView().getTitle().equals("ShulkerBox")){
-            if(slot.getType().name().endsWith("SHULKER_BOX")){
+        if (e.getView().getTitle().equals("ShulkerBox")) {
+            if (slot != null && slot.getType().name().endsWith("SHULKER_BOX")) {
                 e.setCancelled(true);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
                 player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
+            } else if (e.getAction() == InventoryAction.HOTBAR_SWAP) {
+                ItemStack hotBarItem = player.getInventory().getItem(e.getHotbarButton());
+                if (hotBarItem != null && hotBarItem.getType().name().endsWith("SHULKER_BOX")) {
+                    e.setCancelled(true);
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスは選択できません"));
+                    player.playSound(loc, Sound.ENTITY_VILLAGER_NO, 2, 1);
+                }
             }
         }
-
     }
 
     @EventHandler
-        public void onClose(InventoryCloseEvent e) {
+    public void onClose(InventoryCloseEvent e) {
         Inventory backpack = e.getInventory();
         Player player = (Player) e.getPlayer();
         if (e.getView().getTitle().equals("ShulkerBox")) {
             ItemStack Shulkerhand = player.getInventory().getItemInMainHand();
-            if (Shulkerhand.getType() == Material.SHULKER_BOX) {
+            if (Shulkerhand.getType().name().endsWith("SHULKER_BOX")) {
                 if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
                     BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
                     if (im.getBlockState() instanceof ShulkerBox) {
                         Location ploc = player.getLocation().clone();
                         ploc.setY(ploc.getY() + 2);
                         Material ycheack = ploc.getBlock().getType();
-                        while (ycheack != Material.AIR && ycheack.name().endsWith("SHULKER_BOX")) {
-                            if (ploc.getY() == 255) {
+                        while (ycheack != Material.AIR) {
+                            if (ploc.getY() > 255) {
                                 ploc.setX(ploc.getX() + 1);
+                                ploc.setY(128);
                                 ycheack = ploc.getBlock().getType();
                                 continue;
                             }
@@ -93,48 +100,19 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
                             ploc.setY(ploc.getY() + 1);
                             ycheack = ploc.getBlock().getType();
                         }
-                            Block yblock = ploc.getBlock();
-                            yblock.setType(Material.SHULKER_BOX);
-                            ShulkerBox fakeshulker = (ShulkerBox) yblock.getState();
-                            Inventory newInv = fakeshulker.getInventory();
-                            newInv.setContents(backpack.getContents());
-                            im.setBlockState(yblock.getState());
-                            Shulkerhand.setItemMeta(im);
-                            yblock.setType(Material.AIR);
-                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
-                        }
+                        Block yblock = ploc.getBlock();
+                        yblock.setType(Material.SHULKER_BOX);
+                        ShulkerBox fakeshulker = (ShulkerBox) yblock.getState();
+                        Inventory newInv = fakeshulker.getInventory();
+                        newInv.setContents(backpack.getContents());
+                        im.setBlockState(yblock.getState());
+                        Shulkerhand.setItemMeta(im);
+                        yblock.setType(Material.AIR);
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
                     }
+                }
 
-                } else if (Shulkerhand.getType().name().endsWith("SHULKER_BOX")) {
-                    if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
-                        BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
-                        if (im.getBlockState() instanceof ShulkerBox) {
-                            Location ploc = player.getLocation().clone();
-                            ploc.setY(ploc.getY() + 2);
-                            Material ycheack = ploc.getBlock().getType();
-                            while (ycheack != Material.AIR && ycheack.name().endsWith("SHULKER_BOX")) {
-                                if (ploc.getY() == 255) {
-                                    ploc.setX(ploc.getX() + 1);
-                                    ycheack = ploc.getBlock().getType();
-                                    continue;
-                                }
-
-                                ploc.setY(ploc.getY() + 1);
-                                ycheack = ploc.getBlock().getType();
-                            }
-                            Block yblock = ploc.getBlock();
-                            yblock.setType(Material.SHULKER_BOX);
-                            ShulkerBox fakeshulker = (ShulkerBox) yblock.getState();
-                            Inventory newInv = fakeshulker.getInventory();
-                            newInv.setContents(backpack.getContents());
-                            im.setBlockState(yblock.getState());
-                            Shulkerhand.setItemMeta(im);
-                            yblock.setType(Material.AIR);
-                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
-                        }
-                    }
+            }
                 }
             }
         }
-    }
-
