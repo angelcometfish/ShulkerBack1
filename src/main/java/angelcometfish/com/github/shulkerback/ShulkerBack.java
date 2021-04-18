@@ -20,8 +20,19 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class ShulkerBack extends JavaPlugin implements Listener {
 
+    @Override
+    public void onEnable() {
+        Bukkit.getPluginManager().registerEvents(this, this);
+        Bukkit.getLogger().info(getName() + " が起動しました");
+    }
+
+    @Override
+    public void onDisable() {
+        Bukkit.getLogger().info(getName() + " が終了しました");
+    }
+
     @EventHandler
-    public void interrupt(PlayerInteractEvent e) {
+    public void openShulkerInventory(PlayerInteractEvent e) {
         Player player = e.getPlayer();
         ItemStack handItem = player.getInventory().getItemInMainHand();
         Location loc = player.getLocation();
@@ -44,19 +55,8 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
         player.openInventory(shulkerInventory);
     }
 
-    @Override
-    public void onEnable() {
-        Bukkit.getPluginManager().registerEvents(this, this);
-        Bukkit.getLogger().info(getName() + " が起動しました");
-    }
-
-    @Override
-    public void onDisable() {
-        Bukkit.getLogger().info(getName() + " が終了しました");
-    }
-
     @EventHandler
-    public void onClick(InventoryClickEvent e) {
+    public void disableShulkerBoxInput(InventoryClickEvent e) {
         ItemStack slot = e.getCurrentItem();
         Player player = (Player) e.getView().getPlayer();
         Location loc = player.getLocation();
@@ -77,7 +77,7 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
     }
 
     @EventHandler
-    public void onClose(InventoryCloseEvent e) {
+    public void saveShulkerBoxInventoryOnClose(InventoryCloseEvent e) {
         Inventory inv = e.getInventory();
         Player player = (Player) e.getPlayer();
         if (!e.getView().getTitle().equals("ShulkerBox")) {
