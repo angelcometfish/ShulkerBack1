@@ -1,7 +1,9 @@
 package angelcometfish.com.github.shulkerback;
 
-import org.bukkit.*;
-import org.bukkit.block.Block;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.block.ShulkerBox;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -18,45 +20,43 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class ShulkerBack extends JavaPlugin implements Listener {
 
-
-    @EventHandler
-    public void interrupt(PlayerInteractEvent e){
-        Player player = e.getPlayer();
-        ItemStack Shulkerhand = player.getInventory().getItemInMainHand();
-        Location loc = player.getLocation();
-
-        if (Shulkerhand.getType().name().endsWith("SHULKER_BOX")) {
-            if(e.getAction()== Action.RIGHT_CLICK_AIR)
-                if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
-                    BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
-                    if (im.getBlockState() instanceof ShulkerBox) {
-                        ShulkerBox shulker = (ShulkerBox) im.getBlockState();
-                        Inventory inv = Bukkit.createInventory(null, 27, "ShulkerBox");
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを開きます"));
-                        player.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
-                        inv.setContents(shulker.getInventory().getContents());
-                        player.openInventory(inv);
-
-                    }
-                }
-        }
-    }
-
     @Override
     public void onEnable() {
-        System.out.println("シュルカープラグインが読み込まれました");
         Bukkit.getPluginManager().registerEvents(this, this);
-        // Plugin startup logic
-
+        Bukkit.getLogger().info(getName() + " が起動しました");
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        Bukkit.getLogger().info(getName() + " が終了しました");
     }
 
     @EventHandler
-    public void onClick(InventoryClickEvent e) {
+    public void openShulkerInventory(PlayerInteractEvent e) {
+        Player player = e.getPlayer();
+        ItemStack handItem = player.getInventory().getItemInMainHand();
+        Location loc = player.getLocation();
+
+        if (!handItem.getType().name().endsWith("SHULKER_BOX")) {
+            return;
+        }
+        if (e.getAction() != Action.RIGHT_CLICK_AIR) {
+            return;
+        }
+
+        Inventory shulkerInventory = getShulkerInventory(handItem);
+        if (shulkerInventory == null) {
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cシュルカーボックスを開けませんでした"));
+            return;
+        }
+
+        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを開きます"));
+        player.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
+        player.openInventory(shulkerInventory);
+    }
+
+    @EventHandler
+    public void disableShulkerBoxInput(InventoryClickEvent e) {
         ItemStack slot = e.getCurrentItem();
         Player player = (Player) e.getView().getPlayer();
         Location loc = player.getLocation();
@@ -77,42 +77,76 @@ public final class ShulkerBack extends JavaPlugin implements Listener {
     }
 
     @EventHandler
-    public void onClose(InventoryCloseEvent e) {
-        Inventory backpack = e.getInventory();
+    public void saveShulkerBoxInventoryOnClose(InventoryCloseEvent e) {
+        Inventory inv = e.getInventory();
         Player player = (Player) e.getPlayer();
-        if (e.getView().getTitle().equals("ShulkerBox")) {
-            ItemStack Shulkerhand = player.getInventory().getItemInMainHand();
-            if (Shulkerhand.getType().name().endsWith("SHULKER_BOX")) {
-                if (Shulkerhand.getItemMeta() instanceof BlockStateMeta) {
-                    BlockStateMeta im = (BlockStateMeta) Shulkerhand.getItemMeta();
-                    if (im.getBlockState() instanceof ShulkerBox) {
-                        Location ploc = player.getLocation().clone();
-                        ploc.setY(ploc.getY() + 2);
-                        Material ycheack = ploc.getBlock().getType();
-                        while (ycheack != Material.AIR) {
-                            if (ploc.getY() > 255) {
-                                ploc.setX(ploc.getX() + 1);
-                                ploc.setY(128);
-                                ycheack = ploc.getBlock().getType();
-                                continue;
-                            }
-
-                            ploc.setY(ploc.getY() + 1);
-                            ycheack = ploc.getBlock().getType();
-                        }
-                        Block yblock = ploc.getBlock();
-                        yblock.setType(Material.SHULKER_BOX);
-                        ShulkerBox fakeshulker = (ShulkerBox) yblock.getState();
-                        Inventory newInv = fakeshulker.getInventory();
-                        newInv.setContents(backpack.getContents());
-                        im.setBlockState(yblock.getState());
-                        Shulkerhand.setItemMeta(im);
-                        yblock.setType(Material.AIR);
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
-                    }
-                }
-
-            }
-                }
-            }
+        if (!e.getView().getTitle().equals("ShulkerBox")) {
+            return;
         }
+        ItemStack handItem = player.getInventory().getItemInMainHand();
+        boolean success = saveShulkerInventory(handItem, inv);
+        if (success) {
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2シュルカーボックスを閉じます"));
+        } else {
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cアイテムは正常に保存されませんでした"));
+            // TODO e.getInventory() の内容をファイル等に保存して、後から運営が見れるようにすることで、補填をスムーズに行えるようにする
+        }
+    }
+
+    /**
+     * アイテムからシュルカーボックスのインベントリを取得する
+     *
+     * @param item インベントリを取得したいシュルカーボックス
+     * @return 取得したインベントリ。何らかの理由で失敗した場合は null を返す
+     * @throws IllegalArgumentException アイテムがシュルカーボックスではない場合
+     */
+    private Inventory getShulkerInventory(ItemStack item) {
+        if (item == null || !item.getType().name().endsWith("SHULKER_BOX")) {
+            throw new IllegalArgumentException();
+        }
+
+        if (item.getItemMeta() == null || !(item.getItemMeta() instanceof BlockStateMeta)) {
+            return null;
+        }
+
+        BlockStateMeta shulkerBlockState = (BlockStateMeta) item.getItemMeta();
+        if (!(shulkerBlockState.getBlockState() instanceof ShulkerBox)) {
+            return null;
+        }
+
+        ShulkerBox shulker = (ShulkerBox) shulkerBlockState.getBlockState();
+        Inventory inv = Bukkit.createInventory(null, 27, "ShulkerBox");
+        inv.setContents(shulker.getInventory().getContents());
+
+        return inv;
+    }
+
+    /**
+     * シュルカーのインベントリを保存する
+     *
+     * @param item 保存先のシュルカーアイテム
+     * @param inv  保存元のインベントリ
+     * @return 成功した場合 true、失敗した場合 false
+     * @throws IllegalArgumentException アイテムがシュルカーではない場合
+     */
+    private boolean saveShulkerInventory(ItemStack item, Inventory inv) {
+        if (item == null || !item.getType().name().endsWith("SHULKER_BOX")) {
+            throw new IllegalArgumentException();
+        }
+
+        if (item.getItemMeta() == null || !(item.getItemMeta() instanceof BlockStateMeta)) {
+            return false;
+        }
+
+        BlockStateMeta shulkerItemMeta = (BlockStateMeta) item.getItemMeta();
+        if (!(shulkerItemMeta.getBlockState() instanceof ShulkerBox)) {
+            return false;
+        }
+
+        ShulkerBox shulkerBlockState = (ShulkerBox) shulkerItemMeta.getBlockState();
+        shulkerBlockState.getInventory().setContents(inv.getContents());
+        shulkerItemMeta.setBlockState(shulkerBlockState);
+        item.setItemMeta(shulkerItemMeta);
+        return true;
+    }
+}
